@@ -1,4 +1,4 @@
-import com.example.CatFamily;
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -6,52 +6,58 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @ExtendWith(MockitoExtension.class)
 public class LionTest {
 
     @Mock
-    CatFamily catFamily;
+    Feline feline;
 
     @Test
-    public void getKittensDelegatesToCatFamilyMale() throws Exception {
-        Lion lion = new Lion("Самец", catFamily);
+    public void getKittensDelegatesToFelineMale() throws Exception {
+        Lion lion = new Lion("Самец", feline);
         lion.getKittens();
 
-        Mockito.verify(catFamily, Mockito.times(1)).getKittens();
+        Mockito.verify(feline, Mockito.times(1)).getKittens();
     }
 
     @Test
-    public void getKittensDelegatesToCatFamilyFemale() throws Exception {
-        Lion lion = new Lion("Самка", catFamily);
+    public void getKittensDelegatesToFelineFemale() throws Exception {
+        Lion lion = new Lion("Самка", feline);
         lion.getKittens();
 
-        Mockito.verify(catFamily, Mockito.times(1)).getKittens();
+        Mockito.verify(feline, Mockito.times(1)).getKittens();
     }
 
     @Test
-    public void getKittensDelegatesToCatFamilyNonBinary() {
-        assertThrows(Exception.class, () -> new Lion("", catFamily));
+    public void getKittensDelegatesToFelineNonBinary() {
+        assertThrows(Exception.class, () -> new Lion("", feline));
 
     }
 
     @Test
     void constructorSetsHasManeForMale() throws Exception {
-        Lion lion = new Lion("Самец", catFamily);
-        boolean expected = "Самец".equals("Самец");
-        assertTrue(lion.doesHaveMane());
+        Lion lion = new Lion("Самец", feline);
+        boolean expected = true;
+        assertEquals(expected, lion.doesHaveMane());
 
     }
 
     @Test
-    public void getFoodDelegatesToCatFamily() throws Exception {
-        Lion lion = new Lion("Самец", catFamily);
+    void constructorSetsHasManeForFemale() throws Exception {
+        Lion lion = new Lion("Самка", feline);
+        boolean expected = false;
+        assertEquals(expected, lion.doesHaveMane());
+    }
+
+    @Test
+    public void getFoodDelegatesToFeline() throws Exception {
+        Lion lion = new Lion("Самец", feline);
         lion.getFood();
 
-        Mockito.verify(catFamily, Mockito.times(1)).getFood();
+        Mockito.verify(feline, Mockito.times(1)).getFood();
     }
 
 

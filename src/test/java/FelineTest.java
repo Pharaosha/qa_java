@@ -31,12 +31,16 @@ public class FelineTest {
     @Test
     public void eatMeatReturnsPredatorFoodList() throws Exception {
         Feline feline = new Feline();
-        List<String> food = feline.eatMeat();
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        List<String> actualFood = feline.eatMeat();
+        assertEquals(expectedFood, actualFood);
     }
 
     @Test
     public void getFoodReturnsPredatorFoodList() throws Exception {
         Feline feline = new Feline();
-        List<String> food = feline.getFood();
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        List<String> actualFood = feline.getFood();
+        assertEquals(expectedFood, actualFood);
     }
 }

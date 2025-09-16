@@ -21,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @ParameterizedTest
     @CsvSource({
-            "Травоядное, Трава;Различные растения",
-            "Хищник, Животные;Птицы;Рыба"
+            "Трава;Различные растения",
+            "Животные;Птицы;Рыба"
     })
-    void testGetFood(String animalKind, String expectedFoodString) throws Exception {
+    void testGetFood(String expectedFoodString) throws Exception {
         Cat cat = new Cat(feline);
         List<String> expectedFood = List.of(expectedFoodString.split(";"));
 
