@@ -22,4 +22,8 @@ public class Feline extends Animal implements Predator {
         return kittensCount;
     }
 
+    public List<String> getFood() throws Exception {
+        return getFood("Хищник");
+    }
+
 }
